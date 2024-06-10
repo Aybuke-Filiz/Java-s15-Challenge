@@ -30,28 +30,24 @@ public class Kutuphane {
         this.readers = readers;
     }
 
-
-    public List<Book> get_books() {
-        return this.books;
-    }
-
-    public List<Book> get_reader(String readerName) {
-        return this.readers.get(readerName);
-    }
-
-    public void new_book(Book book) {
+    public void add_new_book(Book book) {
         this.books.add(book);
+        System.out.println("Kitap başarıyla eklendi: " + book);
     }
+
 
     public void lend_book(String readerName, Book book) {
         if (!this.readers.containsKey(readerName)) {
             this.readers.put(readerName, new ArrayList<>());
         }
-        if (this.books.contains(book)) {
+        if (this.books.contains(book) && book.isAvailable()) {
             this.books.remove(book);
             this.readers.get(readerName).add(book);
-            book.setStatus("Lent out");
+            book.setAvailable(false);
             book.change_owner(readerName);
+            System.out.println(book.getBook_name() + " kitabı " + readerName + " adlı okuyucuya ödünç verildi.");
+        } else {
+            System.out.println(book.getBook_name() + " kitabı şu anda mevcut değil.");
         }
     }
 
@@ -59,22 +55,25 @@ public class Kutuphane {
         if (this.readers.containsKey(readerName) && this.readers.get(readerName).contains(book)) {
             this.readers.get(readerName).remove(book);
             this.books.add(book);
-            book.setStatus("Available");
+            book.setAvailable(true);
             book.change_owner("Library");
+            System.out.println(book.getBook_name() + " kitabı " + readerName + " adlı okuyucudan geri alındı.");
+        } else {
+            System.out.println(readerName + " adlı okuyucunun bu kitabı ödünç almadığı görünüyor.");
         }
     }
 
     public void show_book(int bookID) {
         for (Book book : books) {
             if (book.getID() == bookID) {
-                book.display();
+                System.out.println(book);
                 return;
             }
         }
         for (List<Book> readerBooks : readers.values()) {
             for (Book book : readerBooks) {
                 if (book.getID() == bookID) {
-                    book.display();
+                    System.out.println(book);
                     return;
                 }
             }

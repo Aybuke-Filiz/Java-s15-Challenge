@@ -6,22 +6,22 @@ public class Book {
     private String book_name;
     private String author;
     private double price;
-    private String  status;
     private String edition;
     private String date_of_purchase;
     private String owner;
+    private boolean isAvailable;
 
-    public Book(String book_name, String author, double price, String status, String edition, String date_of_purchase,String owner){
-        this.book_name=book_name;
-        this.author=author;
-        this.price=price;
-        this.status=status;
-        this.edition=edition;
-        this.date_of_purchase=date_of_purchase;
+    public Book( String book_name, String author, double price, String edition, String owner, String date_of_purchase, boolean isAvailable) {
+        this.ID = ++ID_counter;
+        this.book_name = book_name;
+        this.author = author;
+        this.price = price;
+        this.edition = edition;
         this.owner = owner;
-        ID_counter++;
-        this.ID=ID_counter;
+        this.date_of_purchase = date_of_purchase;
+        this.isAvailable = isAvailable;
     }
+
 
 
     public int getID() {
@@ -61,13 +61,6 @@ public class Book {
         this.price = price;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getEdition() {
         return edition;
@@ -76,9 +69,7 @@ public class Book {
     public void setEdition(String edition) {
         this.edition = edition;
     }
-    public String get_title() {
-        return this.book_name;
-    }
+
 
     public String get_author() {
         return this.author;
@@ -92,20 +83,17 @@ public class Book {
         return this.owner;
     }
 
-    public void update_status(String new_status) {
-        this.status = new_status;
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
-    public void display() {
-        System.out.println("ID: " + this.ID);
-        System.out.println("Book Name: " + this.book_name);
-        System.out.println("Author: " + this.author);
-        System.out.println("Price: " + this.price);
-        System.out.println("Status: " + this.status);
-        System.out.println("Edition: " + this.edition);
-        System.out.println("Date of Purchase: " + this.date_of_purchase);
-        System.out.println("Owner: " + this.owner);
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
+    @Override
+    public String toString() {
+        return "ID: " + ID + ", Book Name: " + book_name + ", Author: " + author + ", Price: " + price + ", Available: " + isAvailable + "Edition: "+edition +"Owner: "+owner + "Date of purchase: " +date_of_purchase;
+    }
 
 }
