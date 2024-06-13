@@ -90,7 +90,7 @@ public class Member_Record {
             noBooksIssued++;
             System.out.println("Kitap başarıyla eklendi. Toplam kitap sayısı: " + noBooksIssued);
         } else {
-            System.out.println("Maksimum kitap limitine ulaşıldı.");
+            System.out.println("En fazla 5 adet kitap alabilirsiniz.");
         }
     }
     public void dec_book_issued() {

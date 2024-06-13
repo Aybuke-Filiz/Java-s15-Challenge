@@ -37,9 +37,6 @@ public class Kutuphane {
 
 
     public void lend_book(String readerName, Book book) {
-        if (!this.readers.containsKey(readerName)) {
-            this.readers.put(readerName, new ArrayList<>());
-        }
         if (this.books.contains(book) && book.isAvailable()) {
             this.books.remove(book);
             this.readers.get(readerName).add(book);

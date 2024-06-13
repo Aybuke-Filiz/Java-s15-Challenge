@@ -38,7 +38,7 @@ public class Librarian {
     }
     public double calculateFine(int overdueDays) {
         double finePerDay = 2.5;
-        double fine = overdueDays * finePerDay;
+        double fine = overdueDays * finePerDay;//overdueDays hesaplaması yaptırılamadı.
         System.out.println("Calculated fine: $" + fine);
         return fine;
     }

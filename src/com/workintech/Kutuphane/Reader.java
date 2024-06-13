@@ -27,7 +27,7 @@ public class Reader {
                 System.out.println(book.getBook_name() + " şu anda mevcut değil.");
             }
         } else {
-            System.out.println("Maksimum kitap limitine ulaşıldı.");
+            System.out.println("En fazla 5 kitap alabilirsiniz.");
         }
     }
 
@@ -44,7 +44,7 @@ public class Reader {
 
     public void show_books() {
         if (borrowedBooks.isEmpty()) {
-            System.out.println("Hiç ödünç alınmış kitap bulunmamaktadır.");
+            System.out.println("Ödünç alınmış kitap bulunmamaktadır.");
         } else {
             for (Book book : borrowedBooks) {
                 System.out.println(book);
